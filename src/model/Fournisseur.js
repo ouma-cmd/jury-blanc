@@ -15,4 +15,8 @@ const FournisseurSchema = mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
     }
-})
+});
+
+const Fournisseur = mongoose.model("Fournisseur",FournisseurSchema)
+
+module.exports = Fournisseur;

@@ -1,17 +1,19 @@
 const express = require ("express");
-const mongoose = require("mongoose");
+
 require("dotenv").config();
 
 const connecteMongoose = require("./src/config/db");
+const routeauthentification = require("./src/router/authentificationRouter")
 
 connecteMongoose();
 
 const app = express();
 
+app.use (express.json())
 
-
+app.use("/api/auth" , routeauthentification);
 
 app.listen((process.env.PORT) , ()=>{
-    console.log(`service is running`);
+    console.log(`service is running`,process.env.PORT);
     
 });
