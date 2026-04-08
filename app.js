@@ -13,6 +13,8 @@ const app = express();
 
 app.use (express.json())
 
+console.log("testing git")
+
 app.use("/api/auth" , routeauthentification);
 
 app.use("/api" , routerSuppliers);
