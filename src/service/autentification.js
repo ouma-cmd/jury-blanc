@@ -1,10 +1,9 @@
 const express = require("express");
 
-const { sign } = require("jsonwebtoken");
 
 const User = require("../model/User");
 const hash = require("../util/hashPassword");
-const token = require("../util/token");
+const { verifyy , signn} = require("../util/token");
 const bcrypt = require("bcryptjs");
 
 const register = async (req, res) => {
@@ -13,7 +12,7 @@ const register = async (req, res) => {
   const useremail = await User.findOne({ email });
 
   if (useremail) {
-    res.send("email deja execets");
+   return  res.status(422).json("email deja execets");
   }
 
   const pass = await hash(password, 10);
@@ -25,7 +24,7 @@ const register = async (req, res) => {
     password: pass,
     role,
   });
-  return userCree;
+  res.json(userCree);
 };
 
 const login = async (req, res) => {
@@ -43,14 +42,16 @@ const login = async (req, res) => {
       return res.send("password is not correct");
     }
 
-    const token = sign(
-      { id: user._id, role: user.role },
-      process.env.SECRET_KEY_ACCESS_TOKEN,
+    // const token = sign(
+    //   { id: user._id, role: user.role },
+    //   process.env.SECRET_KEY_ACCESS_TOKEN,
 
-      {
-        expiresIn: "1d",
-      },
-    );
+    //   {
+    //     expiresIn: "1d",
+    //   },
+    // );
+
+    const token = signn({ id: user._id, role: user.role });
 
     res.status(200).json({ user, token });
   } catch (error) {
@@ -63,7 +64,7 @@ const getUser = async (req, res) => {
 
   const userMe = await User.find({ _id: id });
 
-  console.log(userMe);
+//   console.log(userMe);
 
   res.status(200).json({ userMe });
 };

@@ -12,6 +12,9 @@ const FactureSchema = mongoose.Schema({
     fournisseurId:{
         type : mongoose.Schema.Types.ObjectId
     },
+    description:{
+        type:String
+    },
     amount:{
         type : Number,
         required : true ,
@@ -21,12 +24,14 @@ const FactureSchema = mongoose.Schema({
         type:String,
         required:true,
         trim : true ,
-        enum :[ "unpaid", "partially_paid", "paid", "overdue" ]
+        enum :[ "unpaid", "partially_paid", "paid" ],
+        default: "unpaid"
     },
     dueDate:{
-        type : Date
+        
     }
-});
+    
+},{timestamps:true});
 
 const Facture = mongoose.model("Facture" , FactureSchema)
 

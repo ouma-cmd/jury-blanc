@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
 
 const FournisseurSchema = mongoose.Schema({
@@ -14,7 +15,10 @@ const FournisseurSchema = mongoose.Schema({
     },
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-    }
+        required:true,
+        ref : "user",
+    },
+  
 });
 
 const Fournisseur = mongoose.model("Fournisseur",FournisseurSchema)

@@ -1,11 +1,11 @@
 const express = require("express");
-const { register, login } = require("../service/autentification");
+const { register, login, getUser } = require("../service/autentification");
 
 const registController = async (req, res) => {
   try {
-    const regist = await register(req, res);
+    await register(req, res);
 
-    res.json(regist);
+    
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -19,7 +19,21 @@ const loginController = async (req, res) => {
   }
 };
 
+const userme = async (req,res)=>{
+    try {
+        
+        const user = await getUser(req,res);
+        res.json(user);
+
+    } catch (error) {
+
+        res.status(200).json({message : error.message})
+    }
+
+}
+
 module.exports = {
   registController,
   loginController,
+  userme,
 };

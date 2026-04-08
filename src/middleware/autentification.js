@@ -1,11 +1,10 @@
-const token = require("jsonwebtoken");
-const jwt = require("jsonwebtoken");
+const { verifyy } = require("../util/token");
 
 const midllwerAutentication = (req, res, next) => {
   try {
     const header = req.headers.authorization;
 
-    console.log(header);
+    // console.log(header);
 
     if (!header) {
       res.send("token not find ");
@@ -13,7 +12,7 @@ const midllwerAutentication = (req, res, next) => {
 
     const port = header.split(" ");
 
-    const decode = jwt.verify(port[1], process.env.SECRET_KEY_ACCESS_TOKEN);
+    const decode = verifyy(port[1]);
     // console.log(decode);
 
     req.user = decode;

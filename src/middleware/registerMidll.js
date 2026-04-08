@@ -1,15 +1,12 @@
-const joi = require("../util/joi");
+const virefy = require("../util/joi");
 
 const registermiddlUser = async (req, res, next) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, role  } = req.body;
 
-  console.log(password);
-  console.log(req.body);
-
-  const { err } = joi.validate({ name, email, password, role });
+  const { err } = virefy.validate({ name, email, password, role });
 
   if (err) {
-    return res.send(err);
+    return res.status(422).json(err);
   }
 
   next();
