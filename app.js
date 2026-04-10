@@ -18,9 +18,9 @@ console.log("test 2");
 
 app.use("/api/auth", routeauthentification);
 
-app.use("/api", routerSuppliers);
+app.use("/api/suppliers", routerSuppliers);
 
-app.use("/api", routeInvoucess);
+app.use("/api/invoices", routeInvoucess);
 
 app.listen(process.env.PORT, () => {
   console.log(`service is running`, process.env.PORT);
