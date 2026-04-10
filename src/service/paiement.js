@@ -1,6 +1,5 @@
 const Facture = require("../model/Facture");
 const paiement = require("../model/paiement");
-const paiement = require("../model/paiement");
 
 // creation paiement
 const creationPaiement = async (req, res) => {

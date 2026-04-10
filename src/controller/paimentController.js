@@ -9,11 +9,11 @@ const paimentcontrollerr = async(req,res)=>{
     }
 };
 
-const getallPaiament = async()=>{
+const getallPaiament = async(req,res)=>{
     try {
         await getAllPaiament(req,res);
     } catch (error) {
-        res.send(error)
+        res.send(error);
     }
 }
 
