@@ -1,4 +1,5 @@
 const Facture = require("../model/Facture");
+const paiement = require("../model/paiement");
 
 
 const midllPaiment = async(req,res,next)=>{

@@ -23,7 +23,6 @@ app.use("/api/suppliers", routerSuppliers);
 
 app.use("/api/invoices", routeInvoucess);
 
-
 app.use("/api/invoices", routerPaiment);
 
 app.listen(process.env.PORT, () => {

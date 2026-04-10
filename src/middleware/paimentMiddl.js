@@ -9,7 +9,7 @@ const paimentMidlleware = async(req,res,next)=>{
     const {err} = validerPaiement.validate({amount, note, mode_paiement});
 
     if(err){
-        res.status(404).json({message:err.message})
+       return res.status(422).json({message:err.message})
     }
     next();
 }

@@ -19,6 +19,7 @@ const paiementSchema = new mongoose.Schema({
     },
     amount:{
         type:Number,
+        required:true,
         trim:true,
     },
     paymentDate:{
@@ -33,10 +34,6 @@ const paiementSchema = new mongoose.Schema({
         type :String,
         required:true,
         enum:["espèces","chèque","virement"]
-     },
-     somme:{
-        type:Number,
-        required:true
      }
 },{timestamps:true})
 

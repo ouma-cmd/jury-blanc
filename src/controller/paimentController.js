@@ -1,4 +1,4 @@
-const { creationPaiement } = require("../service/paiement")
+const { creationPaiement , getAllPaiament } = require("../service/paiement")
 
 const paimentcontrollerr = async(req,res)=>{
     try {
@@ -8,7 +8,17 @@ const paimentcontrollerr = async(req,res)=>{
         res.status(500).json({message : error.message})
     }
 };
+
+const getallPaiament = async()=>{
+    try {
+        await getAllPaiament(req,res);
+    } catch (error) {
+        res.send(error)
+    }
+}
+
 module.exports = {
     paimentcontrollerr,
+    getallPaiament,
     
 }
