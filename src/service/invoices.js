@@ -3,9 +3,7 @@ const invoicesse = require("../model/Facture");
 
 // creation invoices
 const creeInvoices = async (req, res) => {
-  const { name, amount, status, description, dueDate, fournisseurId } =
-    req.body;
-
+  const { name, amount, description, dueDate, fournisseurId } =req.body;
   const { id } = req.user;
 
   const facture = await invoicesse.create({
@@ -14,7 +12,6 @@ const creeInvoices = async (req, res) => {
     fournisseurId,
     description,
     amount,
-    status,
     dueDate,
   });
   return res.status(201).json({ facture });
@@ -28,7 +25,7 @@ const listeFacture = async (req, res) => {
   //   if (status) {
   //     query.status = status;
   //   }
-  //   let facture = await invoicesse.find(query);
+    // let facturee = await invoicesse.find(query);
 
   const userId = req.user.id;
 
