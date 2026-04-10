@@ -7,20 +7,18 @@ const {
   getsupplierById,
   ubdateSupp,
   deletFournisseur,
-  
 } = require("../controller/suppliersController");
-
 
 const router = express.Router();
 
-router.post("/suppliers", midllwerAutentication, suppliers, CreatefournisseurController,);
+router.post("/", midllwerAutentication, suppliers, CreatefournisseurController);
 
-router.get("/suppliers",midllwerAutentication , readAllFournisseurController);
+router.get("/", midllwerAutentication, readAllFournisseurController);
 
-router.get("/suppliers/:id", midllwerAutentication ,getsupplierById );
+router.get("/:id", midllwerAutentication, getsupplierById);
 
-router.put("/suppliers/:id" , midllwerAutentication , ubdateSupp);
+router.put("/:id", midllwerAutentication, ubdateSupp);
 
-router.delete("/suppliers/:id", midllwerAutentication , deletFournisseur)
+router.delete("/:id", midllwerAutentication, deletFournisseur);
 
 module.exports = router;

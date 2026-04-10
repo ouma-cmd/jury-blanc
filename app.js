@@ -1,4 +1,4 @@
-const express = require ("express");
+const express = require("express");
 
 require("dotenv").config();
 
@@ -11,15 +11,17 @@ connecteMongoose();
 
 const app = express();
 
-app.use (express.json())
+app.use(express.json());
 
-app.use("/api/auth" , routeauthentification);
+console.log("testing git");
+console.log("test 2");
 
-app.use("/api" , routerSuppliers);
+app.use("/api/auth", routeauthentification);
 
-app.use("/api",routeInvoucess)
+app.use("/api/suppliers", routerSuppliers);
 
-app.listen((process.env.PORT) , ()=>{
-    console.log(`service is running`,process.env.PORT);
-    
+app.use("/api/invoices", routeInvoucess);
+
+app.listen(process.env.PORT, () => {
+  console.log(`service is running`, process.env.PORT);
 });
